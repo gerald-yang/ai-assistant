@@ -1,6 +1,16 @@
 #!/bin/bash
 
-curl -fsSL https://claude.ai/install.sh | bash
+if command -v "claude" >/dev/null 2>&1; then
+	echo "claude code already install"
+else
+	echo "install claude code"
+	curl -fsSL https://claude.ai/install.sh | bash
+fi
 
-sudo snap install node --classic
-sudo npm i -g @openai/codex
+if command -v "codex" >/dev/null 2>&1; then
+	echo "codex is already installed"
+else
+	echo "install codex"
+	sudo snap install node --classic
+	sudo npm i -g @openai/codex
+fi
