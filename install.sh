@@ -14,3 +14,10 @@ else
 	sudo snap install node --classic
 	sudo npm i -g @openai/codex
 fi
+
+if command -v "opencode" >/dev/null 2>&1; then
+        echo "opencode is already installed"
+else
+        echo "install opencode"
+        curl -fsSL https://opencode.ai/install | bash
+fi
