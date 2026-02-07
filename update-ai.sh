@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cluade update
+claude update
 npm i -g @openai/codex
 opencode upgrade
