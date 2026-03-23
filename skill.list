@@ -1,0 +1,3 @@
+Obsidian:
+/plugin marketplace add kepano/obsidian-skills
+/plugin install obsidian@obsidian-skills
