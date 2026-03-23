@@ -1,3 +1,6 @@
-Obsidian:
+obsidian:
 /plugin marketplace add kepano/obsidian-skills
 /plugin install obsidian@obsidian-skills
+
+tmux:
+https://github.com/mitsuhiko/agent-stuff.git
