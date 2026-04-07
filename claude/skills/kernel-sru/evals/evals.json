@@ -1,0 +1,117 @@
+{
+  "skill_name": "kernel-sru",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create SRU patches for the noble kernel at /home/ubuntu/415200/noble for the latest 2 commits and put them in the outgoing folder.",
+      "expected_output": "3 patch files (cover letter + 2 patches) in outgoing/ with [SRU][N] prefix on every Subject line and BugLink: (empty) in every patch including the cover letter.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "All patch files have [SRU][N] in Subject line",
+          "description": "Every .patch file must have 'Subject: [SRU][N][PATCH' — not just some of them"
+        },
+        {
+          "text": "BugLink: present in all patches, not only cover letter",
+          "description": "The non-cover-letter patch files must also contain 'BugLink:' — this is a key SRU requirement"
+        },
+        {
+          "text": "BugLink is left empty (no URL inserted)",
+          "description": "BugLink must not contain https:// or any bug URL — reviewer fills it in later"
+        },
+        {
+          "text": "Cover letter contains SRU section headers",
+          "description": "Cover letter body contains [Impact], [Fix], [Test Plan], and [Where problems could occur] headings"
+        },
+        {
+          "text": "Correct number of output files: 3 (cover letter + 2 patches)",
+          "description": "git format-patch -2 should produce 3 files total"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I have an ubuntu kernel source at /home/ubuntu/415200/noble. Please generate the SRU email patches for the last 1 commit and put them in the outgoing folder.",
+      "expected_output": "2 patch files (cover letter + 1 patch) with [SRU][N] in Subject and empty BugLink: in each. Cover letter has [Impact]/[Fix]/[Test Plan]/[Where problems could occur] sections.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "All patch files have [SRU][N] in Subject line",
+          "description": "Every .patch file must have 'Subject: [SRU][N][PATCH'"
+        },
+        {
+          "text": "BugLink: present in all patches, not only cover letter",
+          "description": "Both the cover letter and the single patch file must contain 'BugLink:'"
+        },
+        {
+          "text": "BugLink is left empty (no URL inserted)",
+          "description": "BugLink must not contain https:// or any URL"
+        },
+        {
+          "text": "Cover letter contains SRU section headers",
+          "description": "Cover letter contains [Impact], [Fix], [Test Plan], and [Where problems could occur]"
+        },
+        {
+          "text": "Correct number of output files: 2 (cover letter + 1 patch)",
+          "description": "git format-patch -1 should produce 2 files total"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Generate kernel SRU patch emails for /home/ubuntu/415200/noble, 3 commits, outgoing folder.",
+      "expected_output": "4 patch files (cover letter + 3 patches) all with [SRU][N] Subject prefix and empty BugLink: in each file.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "All patch files have [SRU][N] in Subject line",
+          "description": "Every .patch file must have 'Subject: [SRU][N][PATCH'"
+        },
+        {
+          "text": "BugLink: present in all patches, not only cover letter",
+          "description": "All 4 files (including all 3 patch files, not just the cover letter) must have BugLink:"
+        },
+        {
+          "text": "BugLink is left empty (no URL inserted)",
+          "description": "BugLink must not contain https:// or any URL"
+        },
+        {
+          "text": "Cover letter contains SRU section headers",
+          "description": "Cover letter contains [Impact], [Fix], [Test Plan], and [Where problems could occur]"
+        },
+        {
+          "text": "Correct number of output files: 4 (cover letter + 3 patches)",
+          "description": "git format-patch -3 should produce 4 files total"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Create SRU patches for the noble kernel at /home/ubuntu/415200/noble for the latest 2 commits with bug https://bugs.launchpad.net/ubuntu/+source/linux/+bug/2104326 and put them in the outgoing folder.",
+      "expected_output": "3 patch files (cover letter + 2 patches). All have [SRU][N] Subject prefix. BugLink is filled with the actual Launchpad URL in every file. Cover letter SRU sections are pre-filled from the bug content (not placeholder text).",
+      "files": [],
+      "assertions": [
+        {
+          "text": "BugLink contains the actual Launchpad URL in all patches",
+          "description": "Every .patch file must have 'BugLink: https://bugs.launchpad.net/ubuntu/+source/linux/+bug/2104326' (not empty)"
+        },
+        {
+          "text": "Cover letter SRU sections are not placeholder text",
+          "description": "The [Impact] section must not contain '<describe the user-visible impact' — it should be filled from the Launchpad bug"
+        },
+        {
+          "text": "All patch files have [SRU][N] in Subject line",
+          "description": "Every .patch file must have 'Subject: [SRU][N][PATCH'"
+        },
+        {
+          "text": "Cover letter contains all four SRU section headers",
+          "description": "Cover letter body must contain [Impact], [Fix], [Test Plan], and [Where problems could occur]"
+        },
+        {
+          "text": "Correct number of output files: 3 (cover letter + 2 patches)",
+          "description": "git format-patch -2 should produce 3 files total"
+        }
+      ]
+    }
+  ]
+}
