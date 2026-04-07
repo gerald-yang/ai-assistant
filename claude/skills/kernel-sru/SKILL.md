@@ -11,7 +11,7 @@ This skill generates properly formatted patch emails for Ubuntu kernel SRU (Stab
 
 - **$1** — Path to the Ubuntu kernel source directory (e.g., `/home/ubuntu/415200/noble`)
 - **$2** — Number of latest commits to include (e.g., `3`)
-- **$3** — (Optional) Launchpad bug URL (e.g., `https://bugs.launchpad.net/ubuntu/+source/linux/+bug/2104326`)
+- **$3** — (Optional) Launchpad bug URL (e.g., `https://bugs.launchpad.net/bugs/2104326`)
 
 If the user doesn't supply $1 or $2, ask for them before proceeding. $3 is optional — if omitted, leave `BugLink:` empty and use placeholder SRU sections in the cover letter.
 
