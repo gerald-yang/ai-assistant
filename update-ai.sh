@@ -6,7 +6,6 @@ else
 	echo "claud not installed"
 fi
 
-
 if command -v "codex" >/dev/null 2>&1; then
 	npm i -g @openai/codex
 else
@@ -17,4 +16,10 @@ if command -v "opencode" >/dev/null 2>&1; then
 	opencode upgrade
 else
 	echo "opencode not install"
+fi
+
+if command -v "agy" >/dev/null 2>&1; then
+	agy update
+else
+	echo "agy not install"
 fi
