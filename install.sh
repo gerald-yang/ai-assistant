@@ -5,6 +5,7 @@ if command -v "claude" >/dev/null 2>&1; then
 else
 	echo "install claude code"
 	curl -fsSL https://claude.ai/install.sh | bash
+	echo "alias clauded='claude --dangerously-skip-permissions'" >> ~/.bashrc
 fi
 
 if command -v "codex" >/dev/null 2>&1; then
@@ -15,6 +16,7 @@ else
 	source ~/.bashrc
 	nvm install --lts
 	npm i -g @openai/codex
+	echo "alias codexd='codex --dangerously-bypass-approvals-and-sandbox'" >> ~/.bashrc
 fi
 
 if command -v "opencode" >/dev/null 2>&1; then
@@ -29,4 +31,5 @@ if command -v "agy" >/dev/null 2>&1; then
 else
         echo "install antigravity cli"
 	curl -fsSL https://antigravity.google/cli/install.sh | bash
+	echo "alias agyd='agy --dangerously-skip-permissions'" >> ~/.bashrc
 fi

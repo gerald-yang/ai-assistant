@@ -10,7 +10,7 @@ fi
 
 echo ""
 if command -v "codex" >/dev/null 2>&1; then
-	echo "## update codex ##"
+	echo "### update codex ###"
 	npm i -g @openai/codex
 else
 	echo "codex not installed"
@@ -18,7 +18,7 @@ fi
 
 echo ""
 if command -v "opencode" >/dev/null 2>&1; then
-	echo "## update opencode ##"
+	echo "### update opencode ###"
 	opencode upgrade
 else
 	echo "opencode not install"
@@ -26,7 +26,7 @@ fi
 
 echo ""
 if command -v "agy" >/dev/null 2>&1; then
-	echo "## update antigravity cli ##"
+	echo "### update antigravity cli ###"
 	agy update
 else
 	echo "agy not install"
