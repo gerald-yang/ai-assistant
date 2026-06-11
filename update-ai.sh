@@ -17,17 +17,17 @@ else
 fi
 
 echo ""
-if command -v "opencode" >/dev/null 2>&1; then
-	echo "### update opencode ###"
-	opencode upgrade
-else
-	echo "opencode not install"
-fi
-
-echo ""
 if command -v "agy" >/dev/null 2>&1; then
 	echo "### update antigravity cli ###"
 	agy update
 else
 	echo "agy not install"
+fi
+
+echo ""
+if command -v "opencode" >/dev/null 2>&1; then
+	echo "### update opencode ###"
+	opencode upgrade
+else
+	echo "opencode not install"
 fi
