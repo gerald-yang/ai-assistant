@@ -2,12 +2,18 @@
 # Read all of stdin into a variable
 input=$(cat)
 
-# --- Who am I and launch directory ---
+# --- Who am I and launch directory (derived from ~/.bashrc PS1) ---
 USER_NAME=$(whoami)
+HOST_NAME=$(hostname -s)
 LAUNCH_DIR=$(echo "$input" | jq -r '.workspace.project_dir // .cwd')
+CHROOT_PREFIX="${debian_chroot:+($debian_chroot)}"
+PROMPT_SEG=$(printf '%s\033[01;32m%s@%s\033[00m:\033[01;34m%s\033[00m' "$CHROOT_PREFIX" "$USER_NAME" "$HOST_NAME" "$LAUNCH_DIR")
 
 # --- Model ---
 MODEL=$(echo "$input" | jq -r '.model.display_name')
+
+# --- Effort ---
+EFFORT=$(echo "$input" | jq -r '.effort.level')
 
 # --- Context progress bar ---
 PCT_RAW=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
@@ -59,9 +65,12 @@ OUTPUT_TOKENS=$(echo "$input" | jq -r '.context_window.total_output_tokens // 0'
 COST=$(awk "BEGIN { printf \"%.4f\", ($INPUT_TOKENS / 1000000 * 3) + ($OUTPUT_TOKENS / 1000000 * 15) }")
 COST_STR="\$${COST}"
 
+# --- Claude code version ---
+VERSION=$(echo "$input" | jq -r '.version')
+
 # --- Assemble output ---
-LINE="${USER_NAME} 📁 ${LAUNCH_DIR} | ${MODEL} | ctx:${CTX_BAR}"
+LINE="${PROMPT_SEG} | ${MODEL} | ${EFFORT} | ctx:${CTX_BAR}"
 [ -n "$RATE_PARTS" ] && LINE="${LINE} | ${RATE_PARTS}"
-LINE="${LINE} | 💰 ${COST_STR}"
+LINE="${LINE} | 💰 ${COST_STR} | ${VERSION}"
 
 printf "%s" "$LINE"
