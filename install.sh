@@ -44,3 +44,5 @@ else
         esac
 fi
 
+mkdir -p ~/bin
+cp -f update-ai.sh ~/bin/

@@ -1,0 +1,17 @@
+onboarding = false
+
+[ui.sound]
+enabled = true
+
+[ui]
+show_agent_labels_on_pane_borders = false
+
+[keys]
+prefix = "ctrl+a"
+new_tab = "f2"
+previous_tab = "f3"
+next_tab = "f4"
+detach = "f6"
+goto = "f7"
+split_vertical = "f8"
+split_horizontal = "f9"
