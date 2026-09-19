@@ -44,5 +44,20 @@ else
         esac
 fi
 
+if command -v "ollama" >/dev/null 2>&1; then
+        echo "ollama is already installed"
+else
+        read -p "Do you want to install ollama? (y/N): " response
+        case "$response" in
+                [yY][eE][sS]|[yY])
+                        echo "install ollama"
+			curl -fsSL https://ollama.com/install.sh | sh
+                        ;;
+                *)
+                        echo "Skipping ollama installation."
+                        ;;
+        esac
+fi
+
 mkdir -p ~/bin
 cp -f update-ai.sh ~/bin/
