@@ -11,7 +11,7 @@ fi
 echo ""
 if command -v "codex" >/dev/null 2>&1; then
 	echo "### update codex ###"
-	npm i -g @openai/codex
+	codex update
 else
 	echo "codex not installed"
 fi
