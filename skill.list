@@ -1,6 +1,10 @@
 obsidian:
-/plugin marketplace add kepano/obsidian-skills
-/plugin install obsidian@obsidian-skills
+/plugin
+add marketplace: kepano/obsidian-skills
+install: obsidian-skills
 
 tmux:
 https://github.com/mitsuhiko/agent-stuff.git
+
+anthropic official:
+superpowers - https://github.com/obra/superpowers
