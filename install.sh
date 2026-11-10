@@ -44,6 +44,14 @@ else
         esac
 fi
 
+if command -v "herdr-app" >/dev/null 2>&1; then
+	echo "herdr-app is installed"
+else
+	echo "install herdr-app and herdr-core"
+	curl -fsSL https://releases.herdr.dev/app/install.sh | sh
+	cp -f herdr/keys.json ~/.config/herdr-app/keys.json
+fi
+
 if command -v "ollama" >/dev/null 2>&1; then
         echo "ollama is already installed"
 else
