@@ -25,9 +25,18 @@ else
 fi
 
 echo ""
-if command -v "opencode" >/dev/null 2>&1; then
-	echo "### update opencode ###"
-	opencode upgrade
+if command -v "opencode2" >/dev/null 2>&1; then
+	echo "### update opencode v2 ###"
+	opencode2 upgrade
 else
-	echo "opencode not install"
+	echo "opencode2 not install"
 fi
+
+echo ""
+if command -v "omp" >/dev/null 2>&1; then
+	echo "### update omp ###"
+	omp update
+else
+	echo "omp not install"
+fi
+
