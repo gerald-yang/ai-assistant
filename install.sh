@@ -29,17 +29,32 @@ else
 	echo "alias agyd='agy --dangerously-skip-permissions'" >> ~/.bashrc
 fi
 
-if command -v "opencode" >/dev/null 2>&1; then
-        echo "opencode is already installed"
+if command -v "omp" >/dev/null 2>&1; then
+        echo "omp is already installed"
 else
-        read -p "Do you want to install opencode? (y/N): " response
+        read -p "Do you want to install omp? (y/N): " response
         case "$response" in
                 [yY][eE][sS]|[yY])
-                        echo "install opencode"
-                        curl -fsSL https://opencode.ai/install | bash
+                        echo "install omp"
+			curl -fsSL https://omp.sh/install | sh
                         ;;
                 *)
-                        echo "Skipping opencode installation."
+                        echo "Skipping omp installation."
+                        ;;
+        esac
+fi
+
+if command -v "opencode v2" >/dev/null 2>&1; then
+        echo "opencode v2 is already installed"
+else
+        read -p "Do you want to install opencode v2? (y/N): " response
+        case "$response" in
+                [yY][eE][sS]|[yY])
+                        echo "install opencode v2"
+			curl -fsSL https://opencode.ai/v2/install | bash
+                        ;;
+                *)
+                        echo "Skipping opencode v2 installation."
                         ;;
         esac
 fi
